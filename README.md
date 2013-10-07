@@ -1,5 +1,5 @@
 # perl-hashcat-utils
-## Set of small utilities useful for advanced password cracking
+## Small set of utilities useful for advanced password cracking
 
 I coded this utilities for my own use, but I think they can also be useful for someone else. That's why I'm releasing them!
 
@@ -15,7 +15,7 @@ Each word from file2 is appended to each word from file1 and then printed to STD
 
         usage: ./combinator.pl file1 file2 [min-length] [max-length]
 
-**Changes/improvements:**
+**Changes / improvements:**
 
 * Only prints uniq words to STDOUT.
 * Min-length, only prints words bigger than the specified length.
@@ -27,7 +27,7 @@ Cut the specific prefix or suffix length off from STDIN and pass it to STDOUT.
 
         usage: ./cutb.pl offset [length] < infile > outfile
 
-**Changes/improvements:**
+**Changes / improvements:**
 
 * Only prints uniq words to STDOUT.
 
@@ -37,7 +37,7 @@ Each word into STDIN is passed to STDOUT if matches a specified word-length rang
 
         usage: ./len.pl min-length [max-length] < infile > outfile
 
-**Changes/improvements:**
+**Changes / improvements:**
 
 * Max-length is not mandatory.  
 
@@ -47,10 +47,21 @@ Each word going into STDIN is passed to STDOUT if matches an specified password 
 
         usage: ./req.pl req_mask < infile > outfile
 
-**Changes/improvements:**
+**Changes / improvements:**
 
 * Uses multiple letters instead of integers (ludsLUDS) [lower, upper, digit, special].
-* Lowercase characters _require_, uppercase characters _exclude_.  
+* Lowercase characters _require_, uppercase characters _exclude_.
+
+## splitlen
+
+Split STDIN into specific files based on string lengths.
+
+        usage: ./splitlen.pl outdir < infile
+
+**Changes / improvements:**
+
+* If the destination directory doesn't exist, then it's created.
+* If a file corresponding to some length is empty, then it's deleted.
 
 # License
 
