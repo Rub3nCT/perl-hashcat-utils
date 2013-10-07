@@ -41,6 +41,17 @@ Each word into STDIN is passed to STDOUT if matches a specified word-length rang
 
 * Max-length is not mandatory.  
 
+## req
+
+Each word going into STDIN is passed to STDOUT if matches an specified password group criteria.
+
+        usage: ./req.pl req_mask < infile > outfile
+
+**Changes/improvements:**
+
+* Uses multiple letters instead of integers (ludsLUDS) [lower, upper, digit, special].
+* Lowercase characters _require_, uppercase characters _exclude_.  
+
 # License
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
