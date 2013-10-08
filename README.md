@@ -63,6 +63,25 @@ Split STDIN into specific files based on string lengths.
 * If the destination directory doesn't exist, then it's created.
 * If a file corresponding to some length is empty, then it's deleted.
 
+## hcchrgen
+
+Automates the process of creating hcchr charset files for hashcat with different encodings for each language.
+
+        usage: ./hcchrgen.pl
+
+**Requirements:**
+
+* iconv GNU binary, needed to convert between different encodings.
+* 'UTF8' folder must contain UTF-8 encoded files with the most common characters.
+* 'UTF8/Special' folder can contain files that also include special characters.
+
+**Results:**
+
+* 'Charsets/Standard' folder charset files will include the most common characters (with the corresponding encodings to each language).
+* 'Charsets/Special' folder charset files will include special characters (with the corresponding encodings to each language).
+* 'Charsets/Combined' folder will contain all the characters from all the encodings of each language merged.
+* Duplicated results are removed (different encodings wich produce the same output).
+
 # License
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
