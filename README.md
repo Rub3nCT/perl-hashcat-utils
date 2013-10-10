@@ -86,6 +86,16 @@ You can find more info on [this hashcat's forum thread](http://hashcat.net/forum
 * 'Charsets/Combined' folder will contain all the characters from all the encodings of each language merged.
 * Duplicated results are removed (different encodings wich produce the same output).
 
+## uniq
+
+Parses STDIN input and only print non duplicated strings to STDOUT.
+
+        usage: ./uniq.pl < infile > outfile
+
+**Changes / improvements:**
+
+* Input data doesn't need to be sorted.
+
 # License
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
