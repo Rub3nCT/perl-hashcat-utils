@@ -5,7 +5,7 @@ I coded this utilities for my own use, but I think they can also be useful for s
 
 Most of these tools are **based on [atom's hashcat-utils](http://hashcat.net/wiki/doku.php?id=hashcat_utils "atom's hashcat-utils homepage").**
 
-They have the same functionality / behaviour, but I have included some extra changes / improvements.  
+They have the same functionality / behaviour, but I have included some extra changes / improvements. Official hashcat-utils are faster as perl is an interpreted language, so use them unless you really need these improvements.  
 
 # Tools included:
 
@@ -68,6 +68,10 @@ Split STDIN into specific files based on string lengths.
 Automates the process of creating hcchr charset files for hashcat with different encodings for each language.
 
         usage: ./hcchrgen.pl
+
+You can find more info on [this hashcat's forum thread](http://hashcat.net/forum/thread-2046.html) and [this hashcat's trac ticket](https://hashcat.net/trac/ticket/55).
+
+**Thanks to:** atom, dudux, HASH-IT, kt819gm, Kuci, m3g9tr0n and Rolf.
 
 **Requirements:**
 

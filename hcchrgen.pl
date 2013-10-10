@@ -76,7 +76,7 @@ sub standard
     my ($encoding, $ISO639, $lang) = @_;
 
     # Only if UTF-8 file exists
-    if (-e "UTF8/$lang.txt") {
+    if (-e "UTF8/$lang.charset") {
 
         # Make language directory if not exists
         if (!-d "Charsets/Standard/$lang") {
@@ -84,7 +84,7 @@ sub standard
         }
 
         # Create corresponding encoding
-        system "iconv UTF8/$lang.txt -c -f utf8 -t $encoding > Charsets/Standard/$lang/$ISO639"
+        system "iconv UTF8/$lang.charset -c -f utf8 -t $encoding > Charsets/Standard/$lang/$ISO639"
           . "_$encoding.hcchr.tmp";
 
         # Sort and remove duplicated characters using HEX values
@@ -134,7 +134,7 @@ sub special
     my ($encoding, $ISO639, $lang) = @_;
 
     # Only if UTF-8 file exists
-    if (-e "UTF8/Special/$lang.txt") {
+    if (-e "UTF8/Special/$lang.charset") {
 
         if (!-d "Charsets/Special/$lang") {
             system "mkdir -p Charsets/Special/$lang";
@@ -142,7 +142,7 @@ sub special
 
         # Create corresponding encoding
         system
-          "iconv UTF8/Special/$lang.txt -c -f utf8 -t $encoding > Charsets/Special/$lang/$ISO639"
+          "iconv UTF8/Special/$lang.charset -c -f utf8 -t $encoding > Charsets/Special/$lang/$ISO639"
           . "_$encoding-special.hcchr.tmp";
 
         # Sort and remove duplicated characters using HEX values
