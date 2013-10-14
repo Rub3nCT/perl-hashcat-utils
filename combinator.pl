@@ -2,19 +2,22 @@
 
 use strict;
 use warnings;
+use Getopt::Long;
 use open IO => q{:bytes};
 
 # name........: combinator.pl
 # author......: Rub3nCT
 # based on....: combinator.c by atom
 # description.: each word from file2 is appended to each word from file1 and then printed to STDOUT.
-# added.......: only prints uniq words to STDOUT.
+# added.......: only prints uniq words to STDOUT (-u / --uniq).
 # ............: min-length, only prints words bigger than the specified length.
 # ............: max-length, only prints words not bigger than the specified length.
 
 if (($#ARGV < 1) or ($#ARGV > 3)) {
-    die "\n usage: $0 file1 file2 [min-length] [max-length]\n";
+    die "\n usage: $0 [-u] file1 file2 [min-length] [max-length]\n";
 }
+
+GetOptions('uniq|u' => \my $uniq);
 
 my $file1 = $ARGV[0];
 my $file2 = $ARGV[1];
@@ -52,23 +55,45 @@ close $FH2 or warn " Warning: unable to close $FH2!!!";
 
 open my $FH1, '<', $file1 or die "\n Error: Couldn't open $file1 for reading!!!\n";
 
-my %uniq;
+if ($uniq) {
 
-while (<$FH1>) {
-    tr/\r\n//d;
-    chomp;
-    next if $_ eq q{};
-    foreach my $append (@file2) {
-        my $str = "$_$append";
-        if ($#ARGV >= 2) {
-            next if (length($str) < $min);
+    my %uniq;
+
+    while (<$FH1>) {
+        tr/\r\n//d;
+        chomp;
+        next if $_ eq q{};
+        foreach my $append (@file2) {
+            my $str = "$_$append";
+            if ($#ARGV >= 2) {
+                next if (length($str) < $min);
+            }
+            if ($#ARGV == 3) {
+                next if (length($str) > $max);
+            }
+            $uniq{$str}++;
+            next if $uniq{$str} > 1;
+            print "$str\n";
         }
-        if ($#ARGV == 3) {
-            next if (length($str) > $max);
-        }
-        $uniq{$str}++;
-        next if $uniq{$str} > 1;
-        print "$str\n";
     }
 }
+
+else {
+    while (<$FH1>) {
+        tr/\r\n//d;
+        chomp;
+        next if $_ eq q{};
+        foreach my $append (@file2) {
+            my $str = "$_$append";
+            if ($#ARGV >= 2) {
+                next if (length($str) < $min);
+            }
+            if ($#ARGV == 3) {
+                next if (length($str) > $max);
+            }
+            print "$str\n";
+        }
+    }
+}
+
 close $FH1 or warn " Warning: unable to close $FH1!!!";

@@ -13,11 +13,11 @@ They have the same functionality / behaviour, but I have included some extra cha
 
 Each word from file2 is appended to each word from file1 and then printed to STDOUT.
 
-        usage: ./combinator.pl file1 file2 [min-length] [max-length]
+        usage: ./combinator.pl [-u] file1 file2 [min-length] [max-length]
 
 **Changes / improvements:**
 
-* Only prints uniq words to STDOUT.
+* Only prints uniq words to STDOUT (-u / --uniq).
 * Min-length, only prints words bigger than the specified length.
 * Max-length, only prints words not bigger than the specified length.
 
@@ -25,11 +25,11 @@ Each word from file2 is appended to each word from file1 and then printed to STD
 
 Cut the specific prefix or suffix length off from STDIN and pass it to STDOUT.
 
-        usage: ./cutb.pl offset [length] < infile > outfile
+        usage: ./cutb.pl [-u] offset [length] < infile > outfile
 
 **Changes / improvements:**
 
-* Only prints uniq words to STDOUT.
+* Only prints uniq words to STDOUT (-u / --uniq).
 
 ## len
 
