@@ -31,7 +31,7 @@ if ($^O eq 'MSWin32') {
 
 my %languages = (
     Arabic     => [ 'ar',    [ 'cp1256', 'ISO-8859-6' ] ],
-    Bulgarian  => [ 'bg',    [ 'cp1251', 'ISO-8859-5', 'KOI8-R' ] ],
+    Bulgarian  => [ 'bg',    [ 'cp1251', 'ISO-8859-5', 'KOI8-R' ] ],          # Rub3nCT
     Castilian  => [ 'es-ES', [ 'cp1252', 'ISO-8859-1', 'ISO-8859-15' ] ],     # dudux & Rub3nCT
     Catalan    => [ 'ca',    [ 'cp1252', 'ISO-8859-1', 'ISO-8859-15' ] ],     # dudux & Rub3nCT
     English    => [ 'en',    [ 'cp1252', 'ISO-8859-1', 'ISO-8859-15' ] ],     # atom
@@ -142,7 +142,7 @@ sub special
 
         # Create corresponding encoding
         system
-          "iconv UTF8/Special/$lang.charset -c -f utf8 -t $encoding > Charsets/Special/$lang/$ISO639"
+"iconv UTF8/Special/$lang.charset -c -f utf8 -t $encoding > Charsets/Special/$lang/$ISO639"
           . "_$encoding-special.hcchr.tmp";
 
         # Sort and remove duplicated characters using HEX values
