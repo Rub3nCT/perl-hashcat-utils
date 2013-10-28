@@ -10,33 +10,42 @@ use open IO => q{:bytes};
 # description.: each word into STDIN is passed to STDOUT if matches a specified word-length range.
 # modified....: max-length is not mandatory.
 
-if (($#ARGV != 0) and ($#ARGV != 1)) {
-    die "\n usage: $0 min-length [max-length] < infile > outfile\n";
+sub usage
+{
+    print "\n usage: $0 min-length [max-length] < infile > outfile\n";
 }
 
-my $min = $ARGV[0];
+if (($#ARGV != 0) and ($#ARGV != 1)) {
+    usage ();
+    exit 1;
+}
+
+my ($min, $max) = @ARGV;
+
 if ($min !~ /^\d+$/) {
+    usage ();
     die "\n Error: minimum length value must be a positive integer!!!\n";
 }
 
-my $max;
 if ($#ARGV == 1) {
-    $max = $ARGV[1];
     if ($max !~ /^\d+$/) {
+        usage ();
         die "\n Error: maximum length value must be a positive integer!!!\n";
     }
     if ($min > $max) {
-        die "\n Error: maximum length value must be bigger than minimum length value!!!\n";
+        usage ();
+        die
+            "\n Error: maximum length value must be bigger than minimum length value!!!\n";
     }
 }
 
 while (<STDIN>) {
-    tr/\r\n//d;
+    tr/\r\n$/\n/d;
     chomp;
     next if $_ eq q{};
-    next if (length($_) < $min);
+    next if (length ($_) < $min);
     if ($#ARGV == 1) {
-        next if (length($_) > $max);
+        next if (length ($_) > $max);
     }
     print "$_\n";
 }

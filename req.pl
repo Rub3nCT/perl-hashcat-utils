@@ -11,23 +11,30 @@ use open IO => q{:bytes};
 # modified....: uses multiple letters instead of integers (ludsLUDS) [lower, upper, digit, special].
 # ............: lowercase characters require, uppercase characters exclude.
 
+sub usage
+{
+    print "\n usage: $0 req_mask < infile > outfile\n";
+}
+
 if ($#ARGV != 0) {
-    die "\n usage: $0 req_mask < infile > outfile\n";
+    usage ();
+    exit 1;
 }
 
 my $req_mask = $ARGV[0];
-if ($req_mask !~ /^(?:[l|u|d|s]){0,4}$/i) {
-    die ' Error: especified req_mask is not a valid mask criteria!!!';
-}
-if (   ($req_mask =~ /l/) && ($req_mask =~ /L/)
+if (   $req_mask !~ /^(?:[l|u|d|s]){0,4}$/i
+    || ($req_mask =~ /l/) && ($req_mask =~ /L/)
     || ($req_mask =~ /u/) && ($req_mask =~ /U/)
     || ($req_mask =~ /d/) && ($req_mask =~ /D/)
     || ($req_mask =~ /s/) && ($req_mask =~ /S/))
 {
-    die ' Error: especified req_mask is not a valid mask criteria!!!';
+    usage ();
+    die
+        "\n Error: specified req_mask is not a valid mask criteria!!! [luds/LUDS]\n";
 }
 
-my ($lower, $LOWER, $upper, $UPPER, $digit, $DIGIT, $special, $SPECIAL) = (0, 0, 0, 0, 0, 0, 0, 0);
+my ($lower, $LOWER, $upper, $UPPER, $digit, $DIGIT, $special, $SPECIAL)
+    = (0, 0, 0, 0, 0, 0, 0, 0);
 
 if ($req_mask =~ /l/) { $lower   = 1 }
 if ($req_mask =~ /L/) { $LOWER   = 1 }
@@ -39,7 +46,7 @@ if ($req_mask =~ /s/) { $special = 1 }
 if ($req_mask =~ /S/) { $SPECIAL = 1 }
 
 while (<STDIN>) {
-    tr/\r\n//d;
+    tr/\r\n$/\n/d;
     chomp;
     next if $_ eq q{};
     if ($lower == 1)   { next if ($_ !~ /[[:lower:]]/) }

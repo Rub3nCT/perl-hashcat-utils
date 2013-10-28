@@ -1,11 +1,11 @@
-# perl-hashcat-utils
+# Perl-hashcat-utils
 ## Small set of utilities useful for advanced password cracking
 
 I coded this utilities for my own use, but I think they can also be useful for someone else. That's why I'm releasing them!
 
 Most of these tools are **based on [atom's hashcat-utils](http://hashcat.net/wiki/doku.php?id=hashcat_utils "atom's hashcat-utils homepage").**
 
-They have the same functionality / behaviour, but I have included some extra changes / improvements. Official hashcat-utils are faster as perl is an interpreted language, so use them unless you really need these improvements.  
+They have the same functionality / behaviour, but I have included some extra changes / improvements. Official hashcat-utils are faster as Perl is an interpreted language, so use them unless you really need these improvements.
 
 # Tools included:
 
@@ -39,7 +39,7 @@ Each word into STDIN is passed to STDOUT if matches a specified word-length rang
 
 **Changes / improvements:**
 
-* Max-length is not mandatory.  
+* Max-length is not mandatory.
 
 ## req
 
@@ -84,7 +84,7 @@ You can find more info on [this hashcat's forum thread](http://hashcat.net/forum
 * 'Charsets/Standard' folder charset files will include the most common characters (with the corresponding encodings to each language).
 * 'Charsets/Special' folder charset files will include special characters (with the corresponding encodings to each language).
 * 'Charsets/Combined' folder will contain all the characters from all the encodings of each language merged.
-* Duplicated results are removed (different encodings wich produce the same output).
+* Duplicated results are removed (different encodings which produce the same output).
 
 ## uniq
 
