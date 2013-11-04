@@ -15,7 +15,7 @@ sub usage
     print "\n usage: $0 min-length [max-length] < infile > outfile\n";
 }
 
-if (($#ARGV != 0) and ($#ARGV != 1)) {
+if (($#ARGV != 0) && ($#ARGV != 1)) {
     usage ();
     exit 1;
 }

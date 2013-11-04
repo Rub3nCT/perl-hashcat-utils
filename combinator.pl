@@ -19,13 +19,13 @@ sub usage
 
 my ($uniq, $file1, $file2, $min, $max) = (0, q{}, q{}, 0, 0);
 
-if (($#ARGV < 1) or ($#ARGV > 4)) {
+if (($#ARGV < 1) || ($#ARGV > 4)) {
     usage ();
     exit 1;
 }
 
 if ($#ARGV == 1) {
-    if (($ARGV[0] eq '-u') or ($ARGV[0] eq '--uniq')) {
+    if (($ARGV[0] eq '-u') || ($ARGV[0] eq '--uniq')) {
         usage ();
         die "\n Error: invalid arguments specified!!!\n";
     }
@@ -36,7 +36,7 @@ if ($#ARGV == 1) {
 }
 
 if ($#ARGV == 2) {
-    if (($ARGV[0] eq '-u') or ($ARGV[0] eq '--uniq')) {
+    if (($ARGV[0] eq '-u') || ($ARGV[0] eq '--uniq')) {
         $uniq  = 1;
         $file1 = $ARGV[1];
         $file2 = $ARGV[2];
@@ -49,7 +49,7 @@ if ($#ARGV == 2) {
 }
 
 if ($#ARGV == 3) {
-    if (($ARGV[0] eq '-u') or ($ARGV[0] eq '--uniq')) {
+    if (($ARGV[0] eq '-u') || ($ARGV[0] eq '--uniq')) {
         $uniq  = 1;
         $file1 = $ARGV[1];
         $file2 = $ARGV[2];
@@ -64,7 +64,7 @@ if ($#ARGV == 3) {
 }
 
 if ($#ARGV == 4) {
-    if (($ARGV[0] eq '-u') or ($ARGV[0] eq '--uniq')) {
+    if (($ARGV[0] eq '-u') || ($ARGV[0] eq '--uniq')) {
         $uniq  = 1;
         $file1 = $ARGV[1];
         $file2 = $ARGV[2];

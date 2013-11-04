@@ -15,7 +15,7 @@ sub usage
     print "\n usage: $0 [-u] offset [length] < infile > outfile\n";
 }
 
-if (($#ARGV < 0) or ($#ARGV > 2)) {
+if (($#ARGV < 0) || ($#ARGV > 2)) {
     usage ();
     exit 1;
 }
@@ -23,7 +23,7 @@ if (($#ARGV < 0) or ($#ARGV > 2)) {
 my ($uniq, $offset, $length) = (0, 0, 0);
 
 if ($#ARGV == 0) {
-    if (($ARGV[0] eq '-u') or ($ARGV[0] eq '--uniq')) {
+    if (($ARGV[0] eq '-u') || ($ARGV[0] eq '--uniq')) {
         usage ();
         die "\n Error: an offset value must be specified!!!\n";
     }
@@ -33,7 +33,7 @@ if ($#ARGV == 0) {
 }
 
 if ($#ARGV == 1) {
-    if (($ARGV[0] eq '-u') or ($ARGV[0] eq '--uniq')) {
+    if (($ARGV[0] eq '-u') || ($ARGV[0] eq '--uniq')) {
         $uniq   = 1;
         $offset = $ARGV[1];
     }
@@ -44,7 +44,7 @@ if ($#ARGV == 1) {
 }
 
 if ($#ARGV == 2) {
-    if (($ARGV[0] eq '-u') or ($ARGV[0] eq '--uniq')) {
+    if (($ARGV[0] eq '-u') || ($ARGV[0] eq '--uniq')) {
         $uniq   = 1;
         $offset = $ARGV[1];
         $length = $ARGV[2];
